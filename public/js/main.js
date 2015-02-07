@@ -1,19 +1,24 @@
-//nb-wiki/Main.js
+//nb-wiki/main.js
 
-var app = angular.module('ng-wiki', ['ngRoute','ngSanitize']);
+var app = angular.module('ng-wiki', ['ngRoute']);
 
-// configure our routes
-    app.config('$routeProvider', function($routeProvider) {
+    // configure our routes
+    app.config(function($routeProvider) {
         $routeProvider
             // route for the home page
             .when('/', {
-                templateUrl : 'pages/home.html'
+                templateUrl : 'pages/home.html',
+                controller: 'homeCtrlr'
             })
 
             // route for the about page
             .when('/categories/:catName', {
-                templateUrl : 'pages/page.html'
+                templateUrl : 'pages/page.html',
+                controller: 'pageCtrlr'
             })
+
+            //else
+            .otherwise({ redirectTo : '/' });
     });
 
 app.run(function($rootScope){
@@ -57,6 +62,10 @@ app.controller('pageCtrlr', function($scope, $routeParams){
         $('#article-edit').show();
         $scope.page.author = $scope.user;
     };
+});
+
+app.controller('homeCtrlr', function($scope){
+    $scope.motd = 'Welcome to ngWiki!';
 });
 
 app.controller('inputCtrlr', function($scope){
