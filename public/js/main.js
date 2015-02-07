@@ -35,23 +35,25 @@ app.run(function($rootScope){
     
     //Dummy Data for Pages and Categories all in one Object
     $rootScope.wiki = {
-        categories: [  {name: 'Internal Docs',    url: 'internal-docs'}, 
-                        {name: 'Agency Docs',     url: 'agency-docs'}, 
-                        {name: 'Reference Docs',  url: 'ref-docs'}, 
-                        {name: 'Content Guides',  url: 'content-guides'},
-                        {name: 'ngWiki Tools',      url: 'wiki-tools'}
-                     ],
-        pages: [{  name:'Home', 
+        motd: 'Welcome to ng-Wiki, Try making a new Category!',
+        categories: [{name: 'ngWiki Tools',      url: 'wiki-tools'}],
+        pages: [{   name:'Home', 
                     category: null,
                     title: 'Home', 
                     author: $rootScope.user, 
-                    body: '',
+                    body: ''
                   },
-                  {  name:'Categories', 
+                  { name:'categories', 
                     category: 'ngWiki Tools',
                     title:'Categories', 
-                    author: $rootScope.user, 
-                    body: 'A List of the categories that have been defined.',
+                    author: 'ng-Wiki System', 
+                    body: 'A List of the categories that have been defined.'
+                  },
+                  { name:'ng-wiki-settings', 
+                    category: 'ngWiki Tools',
+                    title:'ng-Wiki Settings', 
+                    author: 'ng-Wiki System', 
+                    body: 'Customize the settings for your Wiki on this page.'
                   }                  
                 ]
     };
@@ -64,7 +66,28 @@ app.run(function($rootScope){
 });
 
 app.controller('homeCtrlr', function($scope){
-    $scope.motd = 'Welcome to ngWiki!';
+    $scope.motd = $scope.wiki.motd;
+    $scope.emptyCat = {name: '', url:''};
+    $scope.addingCat = false;
+
+    $scope.newCatForm = function(){
+        $scope.addingCat = true;
+    };
+});
+
+app.controller('newCatCtrlr', function($scope){
+    $scope.newCat = function(cat){
+        $scope.wiki.categories.push(cat);
+        $scope.addingCat = false;
+    };
+    $scope.clear = function(){
+        $scope.cat = angular.copy($scope.emptyCat);
+    };
+    $scope.cancel = function(){
+        $scope.cat = angular.copy($scope.emptyCat);
+        $scope.addingCat = false;
+    };
+    
 });
 
 app.controller('catCtrlr', function($scope, $routeParams){
@@ -77,29 +100,36 @@ app.controller('catCtrlr', function($scope, $routeParams){
 });
 
 app.controller('pageCtrlr', function($scope, $routeParams){
-    var routedTitle = $routeParams.pageName;
+    $scope.editingPage = false;
+    var routedName = $routeParams.pageName;
     angular.forEach($scope.wiki.pages, function(val, key){
-        if(val.title == routedTitle){
+        if(val.name == routedName){
             $scope.page = val;
         }
     });
     //$scope.page = currPage;
 
     $scope.showEdit = function(){
-        $('#article-edit').show();
+        $scope.editingPage = true;
     };
 });
 
 app.controller('inputCtrlr', function($scope){
     $scope.updateArticle = function(page){
         $scope.page = page;
-        $('#article-edit').hide();
+        $scope.editingPage = false;
     };
     $scope.clearArticle = function(){
-        $scope.page = $scope.emptyPage;
+        $scope.page = angular.copy($scope.emptyPage);
+    };
+    $scope.deleteArticle = function(page){
+        $scope.editingPage = false;
+        pagesArr = $scope.wiki.pages;
+        pagesArr.splice(pagesArr.indexOf(page), 1);
+        window.location = '#/';
     };
     $scope.cancelEdit = function(){
-        $('#article-edit').hide();
+        $scope.editingPage = false;
     };
     
 });

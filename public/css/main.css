@@ -1,8 +1,8 @@
 /* Main Structures */
 body {background: #dedede; color: #111111; }
-h1{padding: 0 15px;}
+h1{}
 #aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
     #aside li:hover{}
+.max-1080{width: 100%; max-width: 1080px; margin: 0 auto;}
 /* Article Styles */
-#article-edit {display: none;}
 #article-edit textarea{width: 350px;}

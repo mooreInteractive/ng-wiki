@@ -1,9 +1,9 @@
               <div>
                   <h3>{{ page.title }}</h3>
-                  <h4>By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
+                  <h4>By {{ page.author }} <a class="btn" ng-hide="page.name == 'ng-wiki-settings'" ng-click="showEdit()">Edit</a></h4>
                   <div ng-bind-html="page.body"></div><br />     
                   
-                  <div id="article-edit" ng-controller="inputCtrlr">
+                  <div id="article-edit" ng-controller="inputCtrlr" ng-show="editingPage">
                   
                         <h4>Edit Article<a class="btn btn-link" ng-click="cancelEdit()">cancel editing</a></h4>
                         
@@ -15,7 +15,8 @@
                         <textarea ng-model="page.body" rid="body" rows="8"></textarea><Br />
                         
                         <a class="btn btn-primary" ng-click="updateArticle(page)">Save</a>
-                        <a class="btn btn-danger" ng-click="clearArticle()">Clear</a>
+                        <a class="btn btn-warning" ng-click="clearArticle()">Clear</a>
+                        <a class="btn btn-danger" ng-click="deleteArticle(page)">Delete</a>
                         <a class="btn btn-link" ng-click="cancelEdit()">Cancel</a>
 
                     </div>

@@ -1,15 +1,32 @@
 <dl class="dl-horizontal">
   <dt>Welcome</dt>
   <dd>This is the home page. There isn't really much here, but soon will have stats, MOTD, user messages, etc.</dd>
-  <dt>motd</dt>
+  <br />
+  <dt>Message of The Day</dt>
   <dd>{{ motd }}</dd>
 </dl>
 <br />
-<h4>All Pages</h4>
+<h4>Categories <a class="btn btn-link" ng-click="newCatForm()">New Category</a></h4>
+<div id="new-cat-form" ng-controller="newCatCtrlr" ng-show="addingCat">
+                        <h4>New Category{{newCatEdit}}<a class="btn btn-link" ng-click="cancel()">cancel</a></h4>
+                        
+                        <label>Name</label><input class="input-xlarge" id="name" type="text" ng-model="cat.name" placeholder="Category Name"/><br />
+                        
+                        <label>URL-friendly Name</label><input class="input-xlarge" id="url" type="text" ng-model="cat.url" placeholder="category-name"/>
+                        <br />
+                        
+                        <a class="btn btn-primary" ng-click="newCat(cat)">Save</a>
+                        <a class="btn btn-danger" ng-click="clear()">Clear</a>
+                        <a class="btn btn-link" ng-click="cancel()">Cancel</a>
+
+                    </div>
+      <!-- List Current Categories -->
       <div ng-repeat="cat in wiki.categories">
-      	<h5>{{ cat.name }}<a class="btn btn-link" href="#/categories/{{cat.url}}">Category Page</a></h5>
+      	<h5><a class="btn btn-link" href="#/categories/{{cat.url}}">{{ cat.name }}</a></h5>
       	<ul>
-            <li ng-repeat="page in wiki.pages | filter:cat.name as results"><a href="#/pages/{{page.title}}">{{ page.title }}</a></li>
+            <li ng-repeat="page in wiki.pages | filter:cat.name as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
         </ul>
-    </div>
+      </div>
+<br />
+
 
