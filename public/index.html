@@ -1,6 +1,6 @@
 <html ng-app="ng-wiki">
   <head>
-    <title>{{ name }}</title>
+    <title>{{ wiki.name }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Adam Moore - adam@moore-interactive.net">
     
@@ -18,7 +18,8 @@
     
   </head>
   <body>
-    <h1 class="max-1080">{{ name }}</h1>
+    <h1 id="wiki-title" class="max-1080">{{ wiki.name }}</h1>
+    <h3 id="wiki-tagline" class="max-1080">{{ wiki.tagline }}</h3>
     <div id="aside">
     <ul class="nav nav-pills max-1080">
       <li role="presentation"><a href="#/">Home</a></li>

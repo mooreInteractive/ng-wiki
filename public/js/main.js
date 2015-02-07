@@ -28,13 +28,13 @@ var app = angular.module('ng-wiki', ['ngRoute', 'ngSanitize']);
     });
 
 app.run(function($rootScope){
-    $rootScope.name = "ng-Wiki (WIP)";
-    
     //Dummy Data - Need to pull this data from the DB when ready.
     $rootScope.user = 'amoore';
     
     //Dummy Data for Pages and Categories all in one Object
     $rootScope.wiki = {
+        name: 'ng-Wiki',
+        tagline: 'Wikipedia software built with AngularJS',
         motd: 'Welcome to ng-Wiki, Try making a new Category!',
         categories: [{name: 'ngWiki Tools',      url: 'wiki-tools'}],
         pages: [{   name:'Home', 
