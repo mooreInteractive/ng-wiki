@@ -1,0 +1,4 @@
+<h4>{{cat.name}}</h4>
+      	<ul>
+            <li ng-repeat="page in wiki.pages | filter:cat.name as results"><a href="#/pages/{{page.title}}">{{ page.title }}</a></li>
+        </ul>

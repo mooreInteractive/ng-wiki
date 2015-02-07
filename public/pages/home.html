@@ -4,4 +4,12 @@
   <dt>motd</dt>
   <dd>{{ motd }}</dd>
 </dl>
+<br />
+<h4>All Pages</h4>
+      <div ng-repeat="cat in wiki.categories">
+      	<h5>{{ cat.name }}<a class="btn btn-link" href="#/categories/{{cat.url}}">Category Page</a></h5>
+      	<ul>
+            <li ng-repeat="page in wiki.pages | filter:cat.name as results"><a href="#/pages/{{page.title}}">{{ page.title }}</a></li>
+        </ul>
+    </div>
 

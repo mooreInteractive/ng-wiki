@@ -2,8 +2,6 @@
 body {background: #dedede; color: #111111; }
 h1{padding: 0 15px;}
 #aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
-    #aside ul{list-style: none; margin: 0 15px;}
-    #aside li{display: inline-block; padding: 5px 15px; font-weight: bold;}
     #aside li:hover{}
 /* Article Styles */
 #article-edit {display: none;}

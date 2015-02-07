@@ -20,10 +20,18 @@
   <body>
     <h1>{{ name }}</h1>
     <div id="aside">
-    <ul>
-        <li ng-repeat="nav in wiki.categories" >
-            <a href="categories/{{nav.url}}">{{ nav.name }}</a>
-        </li>
+    <ul class="nav nav-pills">
+      <li role="presentation"><a href="#/">Home</a></li>
+      <li role="presentation" class="dropdown" ng-repeat="nav in wiki.categories">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;" role="button" aria-expanded="false">
+          {{ nav.name }} <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li ng-repeat="page in wiki.pages | filter:nav.name as results"><a href="#/pages/{{page.title}}">{{ page.title }}</a></li>
+            <li class="divider"></li>
+            <li><a href="#/categories/{{nav.url}}">All Pages</a></li>
+        </ul>
+      </li>
     </ul>
     </div>
     <div id="page" ng-view>
