@@ -1,0 +1,24 @@
+<div ng-controller="pageCtrlr">
+                <div ng-controller="pageCtrlr">
+                  <h3>{{ page.title }}</h3>
+                  <h4>By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
+                  <div ng-bind-html-unsafe="page.body"></div><br />     
+                  
+                  <div id="article-edit" ng-controller="inputCtrlr">
+                  
+                        <h4>Edit Article<a class="btn btn-link" ng-click="cancelEdit()">cancel editing</a></h4>
+                        
+                        <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="page.title" /><br />
+                        
+                        <label>Author</label><input class="input-xlarge" id="author" type="text" ng-model="page.author" /><br />
+                        
+                        <label>Aricle Body</label><Br />
+                        <textarea ng-model="page.body" rid="body" rows="8"></textarea><Br />
+                        
+                        <a class="btn btn-primary" ng-click="updateArticle(page)">Save</a>
+                        <a class="btn btn-danger" ng-click="clearArticle()">Clear</a>
+                        <a class="btn btn-link" ng-click="cancelEdit()">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
