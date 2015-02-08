@@ -33,6 +33,26 @@ var app = angular.module('ng-wiki', ['ngRoute', 'ngSanitize']);
             .otherwise({ redirectTo : '/' });
     });
 
+app.factory('Category', ['$http', function($http) {
+
+    return {
+        // call to get all cats
+        get : function() {
+            return $http.get('/api/categories');
+        },
+        // call to POST and create a new cat
+        create : function(catData) {
+            return $http.post('/api/categories', catData);
+        },
+
+        // call to DELETE a cat
+        delete : function(id) {
+            return $http.delete('/api/categories/' + id);
+        }
+    }       
+
+}]);
+
 app.run(function($rootScope, $http){
     //Dummy Data - Need to pull this data from the DB when ready.
     $rootScope.user = 'amoore';
@@ -42,11 +62,15 @@ app.run(function($rootScope, $http){
        .then(function(res){
           $rootScope.wiki = res.data;
         });
+
+
     
     $rootScope.emptyPage = {
         author: null,
         title: null,
-        body: null        
+        body: null,
+        name: null,
+        category: 'General'        
     };
 
     $rootScope.goHome = function(){
@@ -54,18 +78,29 @@ app.run(function($rootScope, $http){
     }
 });
 
-app.controller('homeCtrlr', function($scope){
+app.controller('homeCtrlr', function($scope, Category){
     $scope.emptyCat = {name: '', url:''};
     $scope.addingCat = false;
+
+    console.log('Category:');
+    console.log(Category);
 
     $scope.newCatForm = function(){
         $scope.addingCat = true;
     };
 });
 
-app.controller('newCatCtrlr', function($scope){
+app.controller('newCatCtrlr', function($scope, Category){
     $scope.newCat = function(cat){
         $scope.wiki.categories.push(cat);
+        Category.create(cat);
+
+        console.log('$scope.wiki.caegories:');
+        console.log($scope.wiki.categories);
+        console.log('Category.get():');
+        console.log(Category.get());
+        
+
         $scope.addingCat = false;
     };
     $scope.clear = function(){
