@@ -7,6 +7,8 @@ Shared learning experience for Adam Moore and George Hong. Other contributors ma
 
 For now a lot of the files are just bootstrapping. The angular code mostly resides in 'public/js/main.js'. We will be working toward a more industry-standard project structure.
 
+The application is not usable on a public server yet. It resides only on the fornt end with local JS dummy data. Once a user system is set up and the whole thing connects to a db on the back-end, it may be usable publicly. The goal is to keep intitialization steps in the code to a minimum. To Copy the files onto a server, and start the server, then navigate to the index page to begin one-time setup should be the optimal experience. 
+
 -----
 
 Features:
