@@ -1,0 +1,33 @@
+<h2>Wiki Settings</h2>
+<p>Below you can change some of the global properties of this ng-Wiki installation.</p>
+
+<dl class="dl-horizontal">
+
+  <dt>Wiki Name</dt>
+  <dd>
+    <input class="input-xlarge" type="text" ng-model="wiki.name" /><br/ >
+    <span class="help-block">{{ wiki.name }}</span>
+  </dd>
+
+  <dt>Tagline</dt>
+  <dd>
+    <input class="input-xlarge" type="text" ng-model="wiki.tagline" /><br/ >
+    <span class="help-block">{{ wiki.tagline }}</span>
+  </dd>
+
+  <dt>Welcome text</dt>
+  <dd>
+    <textarea class="input-xlarge" ng-model="wiki.welcome" rows="5"></textarea><br/ >
+    <span class="help-block">{{ wiki.welcome }}</span>
+  </dd>
+
+  <dt>Message of The Day</dt>
+  <dd>
+    <textarea class="input-xlarge" ng-model="wiki.motd" rows="5"></textarea><br/ >
+    <span class="help-block">{{ wiki.motd }}</span>
+  </dd>
+
+<a class="btn btn-primary" ng-click="update(wiki)">Save</a>
+<a class="btn btn-link" ng-click="cancel()">Cancel</a>
+
+

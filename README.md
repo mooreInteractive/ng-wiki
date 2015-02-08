@@ -17,7 +17,7 @@ Features:
 
 	-Category Pages: 
 	--List Pages in Category
-	-*next: create new page button
+	--Create New Pages in current Category
 
 	-Generic Pages: 
 	--Display Title, Author(dummy::amoore), Body(HTML)
@@ -25,5 +25,8 @@ Features:
 	-*next: other pages in category
 
 	-Settings Page:
-	-*next: Add Title, Add Welcome Message, Add Message of the Day, Themes? to wiki object.
+	--Set Wiki Name
+	--Set Wiki Tagline
+	--Set Wiki Welcome Message
+	--Set Wiki MOTD
 

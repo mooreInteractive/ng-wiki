@@ -23,6 +23,12 @@ var app = angular.module('ng-wiki', ['ngRoute', 'ngSanitize']);
                 controller: 'pageCtrlr'
             })
 
+            // route for the about page
+            .when('/settings', {
+                templateUrl : 'pages/settings.html',
+                controller: 'settingsCtrlr'
+            })
+
             //else
             .otherwise({ redirectTo : '/' });
     });
@@ -36,26 +42,9 @@ app.run(function($rootScope){
         name: 'ng-Wiki',
         tagline: 'Wikipedia software built with AngularJS',
         motd: 'Welcome to ng-Wiki, Try making a new Category!',
-        categories: [{name: 'ngWiki Tools',      url: 'wiki-tools'}],
-        pages: [{   name:'Home', 
-                    category: null,
-                    title: 'Home', 
-                    author: $rootScope.user, 
-                    body: ''
-                  },
-                  { name:'categories', 
-                    category: 'ngWiki Tools',
-                    title:'Categories', 
-                    author: 'ng-Wiki System', 
-                    body: 'A List of the categories that have been defined.'
-                  },
-                  { name:'ng-wiki-settings', 
-                    category: 'ngWiki Tools',
-                    title:'ng-Wiki Settings', 
-                    author: 'ng-Wiki System', 
-                    body: 'Customize the settings for your Wiki on this page.'
-                  }                  
-                ]
+        welcome: 'ng-Wiki is a free and open source wiki software created with AngularJS. Currrently a fledgling work in progress. The goal is for this application to be reusable and free. Created by Adam Moore and George Hong 2015.',
+        categories: [{name:'General', url:'general'}],
+        pages: []
     };
     
     $rootScope.emptyPage = {
@@ -63,10 +52,13 @@ app.run(function($rootScope){
         title: null,
         body: null        
     };
+
+    $rootScope.goHome = function(){
+        window.location = '#/';
+    }
 });
 
 app.controller('homeCtrlr', function($scope){
-    $scope.motd = $scope.wiki.motd;
     $scope.emptyCat = {name: '', url:''};
     $scope.addingCat = false;
 
@@ -97,6 +89,31 @@ app.controller('catCtrlr', function($scope, $routeParams){
             $scope.cat = val;
         }
     });
+
+    $scope.newPageForm = function(){
+        $scope.addingPage = true;
+    }
+});
+
+app.controller('newPageCtrlr', function($scope){
+    $scope.newPage = function(newpage){
+        newpage.category = $scope.cat.name;//make this category page's category the new page's category
+        //create the name(url) of the page automatically by transformign to lower case, replacing spaces with dashes, and then urlencoding the whole thing.
+        newpage.name = encodeURIComponent(newpage.title.toLowerCase().replace(/ /g, '-'));
+        //set the author as currUser - still dummy data 
+        newpage.author = $scope.user;
+
+        $scope.wiki.pages.push(newpage);
+        $scope.addingPage = false;
+    };
+    $scope.clear = function(){
+        $scope.newpage = angular.copy($scope.emptyPage);
+    };
+    $scope.cancel = function(){
+        $scope.newpage = angular.copy($scope.emptyPage);
+        $scope.addingPage = false;
+    };
+    
 });
 
 app.controller('pageCtrlr', function($scope, $routeParams){
@@ -132,4 +149,17 @@ app.controller('inputCtrlr', function($scope){
         $scope.editingPage = false;
     };
     
+});
+
+app.controller('settingsCtrlr', function($scope){
+
+    $scope.save = function(wiki){
+        $scope.wiki.name = wiki.name;
+        $scope.wiki.tagline = wiki.tagline;
+        $scope.wiki.welcome = wiki.welcome;
+        $scope.wiki.motd = wiki.motd;
+    };
+    $scope.cancel = function(){
+        window.location = '#/';
+    }
 });

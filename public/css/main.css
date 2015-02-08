@@ -1,6 +1,7 @@
 /* Main Structures */
 body {background: #dedede; color: #111111; }
-#wiki-title{margin: 25px auto 0 auto!important;}
+#wiki-title{margin: 25px auto 0 auto!important; cursor: pointer;}
+#wiki-title:hover{color: #08c;}
 #wiki-tagline{margin: 5px auto 25px auto!important;}
 #aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
     #aside li:hover{}

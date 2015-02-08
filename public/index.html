@@ -18,7 +18,7 @@
     
   </head>
   <body>
-    <h1 id="wiki-title" class="max-1080">{{ wiki.name }}</h1>
+    <h1 id="wiki-title" class="max-1080" ng-click="goHome()">{{ wiki.name }}</h1>
     <h3 id="wiki-tagline" class="max-1080">{{ wiki.tagline }}</h3>
     <div id="aside">
     <ul class="nav nav-pills max-1080">
@@ -33,6 +33,7 @@
             <li><a href="#/categories/{{nav.url}}">All Pages</a></li>
         </ul>
       </li>
+      <li role="presentation"><a href="#/settings">Wiki Settings</a></li>
     </ul>
     </div>
     <div id="page" class="max-1080 jumbotron" ng-view>
