@@ -33,19 +33,15 @@ var app = angular.module('ng-wiki', ['ngRoute', 'ngSanitize']);
             .otherwise({ redirectTo : '/' });
     });
 
-app.run(function($rootScope){
+app.run(function($rootScope, $http){
     //Dummy Data - Need to pull this data from the DB when ready.
     $rootScope.user = 'amoore';
     
-    //Dummy Data for Pages and Categories all in one Object
-    $rootScope.wiki = {
-        name: 'ng-Wiki',
-        tagline: 'Wikipedia software built with AngularJS',
-        motd: 'Welcome to ng-Wiki, Try making a new Category!',
-        welcome: 'ng-Wiki is a free and open source wiki software created with AngularJS. Currrently a fledgling work in progress. The goal is for this application to be reusable and free. Created by Adam Moore and George Hong 2015.',
-        categories: [{name:'General', url:'general'}],
-        pages: []
-    };
+    //DUmmy data from JSON file
+    $http.get('data/wiki.json')
+       .then(function(res){
+          $rootScope.wiki = res.data;
+        });
     
     $rootScope.emptyPage = {
         author: null,
@@ -158,6 +154,7 @@ app.controller('settingsCtrlr', function($scope){
         $scope.wiki.tagline = wiki.tagline;
         $scope.wiki.welcome = wiki.welcome;
         $scope.wiki.motd = wiki.motd;
+        $scope.wiki.homeHTML = wiki.homeHTML;
     };
     $scope.cancel = function(){
         window.location = '#/';

@@ -14,6 +14,7 @@ The application is not usable on a public server yet. It resides only on the for
 Features:
 
 	-Main Template: 
+	--Permenant Navigation to Home, Settings
 	--Navigation based on Categories
 	--Create new Categories on home page
 
@@ -31,4 +32,9 @@ Features:
 	--Set Wiki Tagline
 	--Set Wiki Welcome Message
 	--Set Wiki MOTD
+	--set HomeHTML, if not set hoem page shows list of categories after MOTD
+
+Problem Areas:
+	-When pressing a cancel or save button, the new button doesn't work a second time unless navigating to a different page and back.
+	-wiki settings like wiki title and tagline change in real time when updating the form without the need to press save. That doesn't seem appropriate. 
 

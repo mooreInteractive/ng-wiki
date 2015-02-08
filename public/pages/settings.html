@@ -6,25 +6,31 @@
   <dt>Wiki Name</dt>
   <dd>
     <input class="input-xlarge" type="text" ng-model="wiki.name" /><br/ >
-    <span class="help-block">{{ wiki.name }}</span>
+    <span class="help-block">The main title of the wiki. Shows up in the Main Header on every page.</span>
   </dd>
 
   <dt>Tagline</dt>
   <dd>
     <input class="input-xlarge" type="text" ng-model="wiki.tagline" /><br/ >
-    <span class="help-block">{{ wiki.tagline }}</span>
+    <span class="help-block">A phrase or slogan to sit just below the wiki title in the main header on every page.</span>
   </dd>
 
   <dt>Welcome text</dt>
   <dd>
     <textarea class="input-xlarge" ng-model="wiki.welcome" rows="5"></textarea><br/ >
-    <span class="help-block">{{ wiki.welcome }}</span>
+    <span class="help-block">A welcome message at the top of the home page.</span>
   </dd>
 
   <dt>Message of The Day</dt>
   <dd>
     <textarea class="input-xlarge" ng-model="wiki.motd" rows="5"></textarea><br/ >
-    <span class="help-block">{{ wiki.motd }}</span>
+    <span class="help-block">A message of the day. Sits just below the Welcome message on the home page.</span>
+  </dd>
+
+  <dt>Home Page HTML</dt>
+  <dd>
+    <textarea class="input-xlarge" ng-model="wiki.homeHTML" rows="5"></textarea><br/ >
+    <span class="help-block">Any additional HTML you'd like to include on the homepage. If left empty, a Category listing will be shown.</span>
   </dd>
 
 <a class="btn btn-primary" ng-click="update(wiki)">Save</a>
