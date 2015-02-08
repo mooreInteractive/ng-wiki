@@ -14,12 +14,13 @@ Running 'npm install' should install these, and be ready to run on the server.
 
 Run the server with 'node server.js'.
 
-The application is not usable on a public server yet. It resides only on the fornt end with local JSON dummy data. Once a user system is set up and the whole thing connects to a db on the back-end, it may be usable publicly. The goal is to keep intitialization steps in the code to a minimum. The optimal installation experience should be 3 steps:
+The application is not usable on a public server yet. It resides only on the fornt end with local JSON dummy data. Once a user system is set up and the whole thing connects to a db on the back-end, it may be usable publicly. The goal is to keep intitialization steps in the code to a minimum. The optimal installation experience should be 4 steps:
 
 	-Copy ng-wiki files to node server.
+	-Npm Install via package.json
 	-Run the server application.
 	-Navigate to page in browser for one-time wiki setup.
- 
+
 
 -----
 
