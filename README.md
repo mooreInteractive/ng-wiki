@@ -19,10 +19,12 @@ The application is not usable on a public server yet. It resides only on the for
 
 **Installation**
 
-	-Copy ng-wiki files to node server.
+	-Clone ng-wiki files
+    -Have Node installed
+    -NPM Proxy settings
 	-Npm Install via package.json
 	-Run the server application.
-	-Navigate to page in browser for one-time wiki setup.
+	-Navigate to page in browser for one-time wiki setup -> http://localhost:8080/
 
 
 -----
