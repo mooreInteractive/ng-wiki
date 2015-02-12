@@ -92,6 +92,8 @@ app.controller('homeCtrlr', function($scope, Category){
 
 app.controller('newCatCtrlr', function($scope, Category){
     $scope.newCat = function(cat){
+        newURL = cat.name.toLowerCase().replace(/ /g, '-');
+        cat.url = newURL;
         $scope.wiki.categories.push(cat);
         Category.create(cat);
 
@@ -115,11 +117,14 @@ app.controller('newCatCtrlr', function($scope, Category){
 
 app.controller('catCtrlr', function($scope, $routeParams){
     var routedCat = $routeParams.catUrl;
+    var catExists = false;
     angular.forEach($scope.wiki.categories, function(val, key){
         if(val.url == routedCat){
             $scope.cat = val;
+            catExists = true;
         }
     });
+    if(!catExists){window.location = '#/';}
 
     $scope.newPageForm = function(){
         $scope.addingPage = true;
