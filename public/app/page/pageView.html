@@ -3,7 +3,7 @@
                   <h4 ng-hide="page.name == 'ng-wiki-settings'">By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
                   <div ng-bind-html="page.body"></div><br />     
                   
-                  <div id="article-edit" ng-controller="inputCtrlr" ng-show="editingPage">
+                  <div id="article-edit" ng-controller="inputController" ng-show="editingPage">
                   
                         <h4>Edit Article<a class="btn btn-link" ng-click="cancelEdit()">cancel editing</a></h4>
                         

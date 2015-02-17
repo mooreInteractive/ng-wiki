@@ -9,7 +9,7 @@
 <div id="homeBody" ng-show="wiki.homeHTML != ''" ng-bind-html="wiki.homeHTML"></div>
 <div ng-show="wiki.homeHTML == ''">
 <h4>Categories <a class="btn btn-link" ng-click="newCatForm()">New Category</a></h4>
-<div id="new-cat-form" ng-controller="newCatCtrlr" ng-show="addingCat">
+<div id="new-cat-form" ng-controller="newCatController" ng-show="addingCat">
                         <h4>New Category{{newCatEdit}}<a class="btn btn-link" ng-click="cancel()">cancel</a></h4>
                         
                         <label>Name</label><input class="input-xlarge" id="name" type="text" ng-model="cat.name" placeholder="Category Name"/>

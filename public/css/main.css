@@ -1,10 +1,15 @@
 /* Main Structures */
 body {background: #dedede; color: #111111; }
-#wiki-title{margin: 25px auto 0 auto!important; cursor: pointer;}
-#wiki-title:hover{color: #08c;}
-#wiki-tagline{margin: 5px auto 25px auto!important;}
+
+#header{margin: 0; padding: 20px 0 30px 50px; background-image: -webkit-linear-gradient(left, #67c082, #47b8e5); background-image: linear-gradient(left, #67c082, #47b8e5); border-bottom: none;}
+    #wiki-title{margin: 25px auto 0 auto!important; cursor: pointer;}
+    #wiki-title:hover{color: #08c;}
+    #wiki-tagline{margin: 5px auto 25px auto!important;}
+
 #aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
     #aside li:hover{}
+ 
 .max-1080{width: 100%; max-width: 1080px; margin: 0 auto;}
+
 /* Article Styles */
 #article-edit textarea{width: 350px;}

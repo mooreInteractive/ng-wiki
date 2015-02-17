@@ -1,6 +1,6 @@
 <h4>{{cat.name}}</h4>
 		<a class="btn btn-link" ng-click="newPageForm()">Create New Page</a> in <strong>{{ cat.name }}</strong><br />
-		<div id="new-page-form" ng-controller="newPageCtrlr" ng-show="addingPage">
+		<div id="new-page-form" ng-controller="newPageController" ng-show="addingPage">
                         <h4>New Page<a class="btn btn-link" ng-click="cancel()">cancel</a></h4>
                         
                         <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="newpage.title" /><br />
