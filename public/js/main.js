@@ -92,7 +92,7 @@ app.controller('homeCtrlr', function($scope, Category){
 
 app.controller('newCatCtrlr', function($scope, Category){
     $scope.newCat = function(cat){
-        newURL = cat.name.toLowerCase().replace(/ /g, '-');
+        newURL = encodeURIComponent(cat.name.toLowerCase().replace(/ /g, '-'));
         cat.url = newURL;
         $scope.wiki.categories.push(cat);
         Category.create(cat);
@@ -134,7 +134,7 @@ app.controller('catCtrlr', function($scope, $routeParams){
 app.controller('newPageCtrlr', function($scope){
     $scope.newPage = function(newpage){
         newpage.category = $scope.cat.name;//make this category page's category the new page's category
-        //create the name(url) of the page automatically by transformign to lower case, replacing spaces with dashes, and then urlencoding the whole thing.
+        
         newpage.name = encodeURIComponent(newpage.title.toLowerCase().replace(/ /g, '-'));
         //set the author as currUser - still dummy data 
         newpage.author = $scope.user;
