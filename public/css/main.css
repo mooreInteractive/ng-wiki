@@ -13,3 +13,5 @@ body {background: #dedede; color: #111111; }
 
 /* Article Styles */
 #article-edit textarea{width: 350px;}
+
+.btn-insert{ position: relative; top: -17px; righT: -200px;}

@@ -1,7 +1,9 @@
               <div>
                   <h3>{{ page.title }}</h3>
                   <h4 ng-hide="page.name == 'ng-wiki-settings'">By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
-                  <div ng-bind-html="page.body"></div><br />     
+                  <div ng-repeat="section in page.body">
+                    <p ng-bind-html="section.text"></p>
+                  </div><br />     
                   
                   <div id="article-edit" ng-controller="inputController" ng-show="editingPage">
                   
@@ -12,7 +14,10 @@
                         <label>Author</label><input class="input-xlarge" id="author" type="text" ng-model="page.author" /><br />
                         
                         <label>Aricle Body</label><Br />
-                        <textarea class="input-xlarge" ng-model="page.body" rid="body" rows="8"></textarea><Br />
+                        <div ng-repeat="section in page.body">
+                        <textarea class="input-xlarge" ng-model="section.text" rid="body" rows="8"></textarea><Br />
+                        <a class="btn btn-link btn-insert" ng-click="addSection(page)"> + Insert New Section </a>
+                        </div>
                         
                         <a class="btn btn-primary" ng-click="updateArticle(page)">Save</a>
                         <a class="btn btn-warning" ng-click="clearArticle()">Clear</a>

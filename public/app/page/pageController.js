@@ -18,6 +18,10 @@ angular.module('ng-wiki.controllers')
 })
 
 .controller('inputController', function($scope){
+
+    $scope.addSection = function(page){
+        page.body.push({'text':''});        
+    };
     $scope.updateArticle = function(page){
         $scope.page = page;
         $scope.editingPage = false;

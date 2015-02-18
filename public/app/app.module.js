@@ -27,7 +27,7 @@ app.run(function($rootScope, $http){
     $rootScope.emptyPage = {
         author: null,
         title: null,
-        body: null,
+        body: [{'text':null}],
         name: null,
         category: 'General'        
     };

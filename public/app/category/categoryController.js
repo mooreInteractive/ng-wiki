@@ -19,6 +19,7 @@ angular.module('ng-wiki.controllers')
 })
 
 .controller('newPageController', function($scope){
+    $scope.newpage = angular.copy($scope.emptyPage);
     $scope.newPage = function(newpage){
         newpage.category = $scope.cat.name;//make this category page's category the new page's category
         

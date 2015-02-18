@@ -6,7 +6,9 @@
                         <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="newpage.title" /><br />
                         
                         <label>Aricle Body</label><Br />
-                        <textarea class="input-xlarge" ng-model="newpage.body" rid="body" rows="8"></textarea><Br />
+                        <div ng-repeat="section in newpage.body">
+                        <textarea class="input-xlarge" ng-model="section.text" rows="8"></textarea><Br />
+                        </div>
                         
                         <a class="btn btn-primary" ng-click="newPage(newpage)">Save</a>
                         <a class="btn btn-danger" ng-click="clear()">Clear</a>
