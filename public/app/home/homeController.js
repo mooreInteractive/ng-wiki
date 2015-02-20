@@ -6,8 +6,9 @@ angular.module('ng-wiki.controllers')
     $scope.emptyCat = {name: '', url:''};
     $scope.addingCat = false;
 
-    console.log('Category:');
-    console.log(Category);
+    Category.get().then(function (response){
+        $scope.wiki.categories = response.data;
+    });
 
     $scope.newCatForm = function(){
         $scope.addingCat = true;
@@ -21,10 +22,10 @@ angular.module('ng-wiki.controllers')
         $scope.wiki.categories.push(cat);
         Category.create(cat);
 
-        console.log('$scope.wiki.caegories:');
-        console.log($scope.wiki.categories);
-        console.log('Category.get():');
-        console.log(Category.get());
+        Category.get().then(function (response){
+            $scope.wiki.categories = response.data;
+            console.log(response.data);
+        });
         
 
         $scope.addingCat = false;

@@ -4,6 +4,6 @@
         "motd": "Welcome to ng-Wiki, Try making a new Category!",
         "welcome": "ng-Wiki is a free and open source wiki software created with AngularJS. Currrently a fledgling work in progress. The goal is for this application to be reusable and free. Created by Adam Moore and George Hong 2015.",
         "homeHTML": "",
-        "categories": [{"name":"General", "url":"general"}],
+        "categories": [],
         "pages": []
     }

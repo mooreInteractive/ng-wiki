@@ -1,39 +1,40 @@
 // app/routes.js
+var mongoose = require('mongoose');
 
 var Category = require('./models/category');
 var Page = require('./models/page');
 var User = require('./models/user');
 
-    module.exports = function(app) {
+var db = require('../config/db');
 
-        // server routes ===========================================================        
-        // sample api route
-        app.get('/api/categories', function(req, res) {
-            // use mongoose to get all nerds in the database
-            Category.find(function(err, cats) {
-                if(err){ res.send(err); }
-                res.json(cats); // return all nerds in JSON format
-            });
-        });
+mongoose.connect(db.url);
 
-        // route to handle creating goes here (app.post)
-        /*app.post('/api/categories', function(req, res, next) {
+module.exports = function(app) {
 
-            var cat = new Category(req.body);
+    // API Routes  
+    //Categories
+    app.get('/api/categories', getCategories );
+    app.post('/api/categories', addCategory );
+    // route to handle delete goes here (app.delete)   
+    
+    // ---- All other none API routes use front-end routing ----
+    app.get('*', function(req, res) {
+        res.sendfile('./public/index.html');
+    });
 
-              cat.save(function(err, cat){
-                if(err){ res.send(err); }
+};
+    
+function getCategories(req, res){
+    Category.find(function(err, categories) {
+        if(err){ res.send(err); }
+        res.json(categories);
+    });
+}
 
-                res.json(cat);
-            });
-
-        });*/
-        // route to handle delete goes here (app.delete)
-
-        // frontend routes =========================================================
-        // route to handle all angular requests
-        app.get('*', function(req, res) {
-            res.sendfile('./public/index.html'); // load our public/index.html file
-        });
-
-    };
+function addCategory(req, res) {
+    var cat = new Category(req.body);
+    cat.save(function(err, cat){
+        if(err){ res.send(err); }
+        res.json(cat);
+    });
+}
