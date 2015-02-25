@@ -2,7 +2,7 @@
 
 angular.module('ng-wiki.controllers')
 
-.controller('pageController', function($scope, $routeParams){
+.controller('pageController', function($scope, $routeParams, Page){
     $scope.editingPage = false;
     var routedName = $routeParams.pageName;
     angular.forEach($scope.wiki.pages, function(val, key){
@@ -15,9 +15,6 @@ angular.module('ng-wiki.controllers')
     $scope.showEdit = function(){
         $scope.editingPage = true;
     };
-})
-
-.controller('inputController', function($scope){
 
     $scope.addSection = function(page){
         page.body.push({'text':''});        

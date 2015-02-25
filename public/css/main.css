@@ -1,6 +1,8 @@
 /* Main Structures */
 body {background: #dedede; color: #111111; }
 
+p {margin: 0;}
+
 #header{margin: 0; padding: 20px 0 30px 50px; background-image: -webkit-linear-gradient(left, #67c082, #47b8e5); background-image: linear-gradient(left, #67c082, #47b8e5); border-bottom: none;}
     #wiki-title{margin: 25px auto 0 auto!important; cursor: pointer;}
     #wiki-title:hover{color: #08c;}
@@ -15,3 +17,13 @@ body {background: #dedede; color: #111111; }
 #article-edit textarea{width: 350px;}
 
 .btn-insert{ position: relative; top: -17px; righT: -200px;}
+
+.page-stats{ 
+    background: #f6f6f7; padding: 20px 15px;
+ }
+ .page-stats .row-fluid { 
+    background: #dedede; border-radius: 7px;
+    margin: 5px;
+ }
+ .page-stats .row-fluid div {padding: 5px 10px;}
+ .page-stats .row-fluid .span2 { padding: 10px 0 0 0; }

@@ -8,14 +8,14 @@ angular.module('ng-wiki.controllers')
 
     Category.get().then(function (response){
         $scope.wiki.categories = response.data;
+        //console.log($scope.wiki);
     });
 
     $scope.newCatForm = function(){
         $scope.addingCat = true;
+        $scope.cat = angular.copy($scope.emptyCat);
     };
-})
 
-.controller('newCatController', function($scope, Category){
     $scope.newCat = function(cat){
         newURL = encodeURIComponent(cat.name.toLowerCase().replace(/ /g, '-'));
         cat.url = newURL;

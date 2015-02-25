@@ -1,8 +1,8 @@
-//Category Factory
+//WikiSettings Factory
 
-angular.module('ng-wiki.factories').factory('Category', ['$http', function($http) {
+angular.module('ng-wiki.factories').factory('Settings', ['$http', function($http) {
 
-    return {
+    /*return {
         // call to get all cats
         get : function() {
             return $http.get('/api/categories');
@@ -20,6 +20,6 @@ angular.module('ng-wiki.factories').factory('Category', ['$http', function($http
         deleteAll : function() {
             return $http.delete('/api/cleardb');
         }
-    }       
+    }*/       
 
 }]);

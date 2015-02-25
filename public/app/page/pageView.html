@@ -1,28 +1,26 @@
-              <div>
-                  <h3>{{ page.title }}</h3>
-                  <h4 ng-hide="page.name == 'ng-wiki-settings'">By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
-                  <div ng-repeat="section in page.body">
-                    <p ng-bind-html="section.text"></p>
-                  </div><br />     
-                  
-                  <div id="article-edit" ng-controller="inputController" ng-show="editingPage">
-                  
-                        <h4>Edit Article<a class="btn btn-link" ng-click="cancelEdit()">cancel editing</a></h4>
-                        
-                        <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="page.title" /><br />
-                        
-                        <label>Author</label><input class="input-xlarge" id="author" type="text" ng-model="page.author" /><br />
-                        
-                        <label>Aricle Body</label><Br />
-                        <div ng-repeat="section in page.body">
-                        <textarea class="input-xlarge" ng-model="section.text" rid="body" rows="8"></textarea><Br />
-                        <a class="btn btn-link btn-insert" ng-click="addSection(page)"> + Insert New Section </a>
-                        </div>
-                        
-                        <a class="btn btn-primary" ng-click="updateArticle(page)">Save</a>
-                        <a class="btn btn-warning" ng-click="clearArticle()">Clear</a>
-                        <a class="btn btn-danger" ng-click="deleteArticle(page)">Delete</a>
-                        <a class="btn btn-link" ng-click="cancelEdit()">Cancel</a>
+<h3>{{ page.title }}</h3>
+<h4 ng-hide="page.name == 'ng-wiki-settings'">By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
+<div ng-repeat="section in page.body">
+<p ng-bind-html="section.text"></p>
+</div><br />     
 
-                    </div>
-                </div>
+<div id="article-edit" ng-show="editingPage">
+
+    <h4>Edit Article<a class="btn btn-link" ng-click="cancelEdit()">cancel editing</a></h4>
+    
+    <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="page.title" /><br />
+    
+    <label>Author</label><input class="input-xlarge" id="author" type="text" ng-model="page.author" /><br />
+    
+    <label>Aricle Body</label><Br />
+    <div ng-repeat="section in page.body">
+    <textarea class="input-xlarge" ng-model="section.text" rid="body" rows="8"></textarea><Br />
+    <a class="btn btn-link btn-insert" ng-click="addSection(page)"> + Insert New Section </a>
+    </div>
+    
+    <a class="btn btn-primary" ng-click="updateArticle(page)">Save</a>
+    <a class="btn btn-warning" ng-click="clearArticle()">Clear</a>
+    <a class="btn btn-danger" ng-click="deleteArticle(page)">Delete</a>
+    <a class="btn btn-link" ng-click="cancelEdit()">Cancel</a>
+
+</div>

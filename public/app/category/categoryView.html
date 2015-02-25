@@ -1,6 +1,6 @@
 <h4>{{cat.name}}</h4>
-		<a class="btn btn-link" ng-click="newPageForm()">Create New Page</a> in <strong>{{ cat.name }}</strong><br />
-		<div id="new-page-form" ng-controller="newPageController" ng-show="addingPage">
+		<a class="btn btn-link" ng-click="newPageForm();">Create New Page</a> in <strong>{{ cat.name }}</strong><br />
+		<div id="new-page-form" ng-show="addingPage">
                         <h4>New Page<a class="btn btn-link" ng-click="cancel()">cancel</a></h4>
                         
                         <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="newpage.title" /><br />
@@ -17,5 +17,23 @@
                     </div>
         <!-- List Current Pages in this Category -->
       	<ul>
-            <li ng-repeat="page in wiki.pages | filter:cat.name as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
+            <li ng-repeat="page in thisCatPages | filter:cat.name as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
         </ul>
+    <br />
+    <br />
+    <div class="container-fluid page-stats">
+        <h4>Category Stats</h4>
+        <div class="alert alert-error" ng-show="catDeleteWarning">
+            <p><strong>Whoops!</strong> {{ catDeleteWarningMsg }} 
+            <a class="close" ng-click="catDeleteWarningMsg = ''; catDeleteWarning = false;">&times;</a></p>
+        </div>
+        <div class="row-fluid">
+            <div class="span10">
+                <p><strong>Delete Category</strong><br />
+                You can only delete a category if there are no pages in it.</p>
+            </div>
+            <div class="span2">
+                <a class="btn btn-danger float-right" ng-click="deleteCat(cat)">Delete Category</a>
+            </div>
+        </div>
+    </div>

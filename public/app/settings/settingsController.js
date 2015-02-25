@@ -1,6 +1,8 @@
 //Settings Controller
 
-angular.module('ng-wiki.controllers').controller('settingsController', function($scope){
+angular.module('ng-wiki.controllers')
+
+.controller('settingsController', function($scope, Category){
     
     $scope.tempSettings = {
         'name': $scope.wiki.name,
@@ -19,6 +21,14 @@ angular.module('ng-wiki.controllers').controller('settingsController', function(
     };
     
     $scope.cancel = function(){
+        window.location = '#/';
+    }
+    
+    $scope.clearDB = function(){
+        Category.deleteAll().then(function (response){
+            $scope.wiki.categories = response.data;
+            console.log(response.data);
+        });        
         window.location = '#/';
     }
 });
