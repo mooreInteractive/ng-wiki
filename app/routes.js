@@ -19,10 +19,10 @@ module.exports = function(app) {
     
     //Pages
     app.get('/api/:cat_id/pages', getPagesByCategory );
-    app.get('/api/pages/:page_id', getPage );
-    app.put('/api/pages/:page_id', updatePage );
+    app.get('/api/page/:page_name', getPage );
+    app.put('/api/page/:page_id', updatePage );
     app.post('/api/pages', addPage );
-    app.delete('/api/pages/:page_id', deletePage );
+    app.delete('/api/page/:page_id', deletePage );
     
     //Dev Utilities
     app.delete('/api/cleardb', clearMongoDb );
@@ -63,20 +63,64 @@ function deleteCategory(req, res){
 function getPagesByCategory(req, res){ 
     Page.find({
         category: req.params.cat_id
+    },
+    'name title category',
+    function(err, pages) {
+        if(err){ res.send(err); }
+        res.json(pages);
+    });
+}
+
+function getPage(req, res){ 
+    Page.findOne({
+        name: req.params.page_name
     }, function(err, pages) {
         if(err){ res.send(err); }
         res.json(pages);
     });
 }
-function getPage(req, res){ console.log('getPage'); }
-function updatePage(req, res){ console.log('updatePage'); }
-function addPage(req, res){ console.log('addPage'); }
-function deletePage(req, res){ console.log('deletePage'); }
+
+function updatePage(req, res){ 
+    Page.findOne({
+        _id: req.params.page_id
+    },
+    function(err, page) {
+        if(err){ res.send(err); }
+        page.body = req.body.body;
+        page.title = req.body.title;
+        
+        page.save(function(err, page){
+            if(err){ res.send(err); }
+            res.json(page);
+        });
+    });
+}
+
+function addPage(req, res){ 
+    var page = new Page(req.body);
+    page.save(function(err, page){
+        if(err){ res.send(err); }
+        res.json(page);
+    });
+}
+
+function deletePage(req, res){ 
+    Page.remove({
+        _id: req.params.page_id
+    }, function(err, page) {
+        if(err){ res.send(err); }
+        res.json(page);
+    });
+}
 
 //Dev Utilities API Functions
 function clearMongoDb(req, res){
     Category.remove({}, function(err, categories) {
         if(err){ res.send(err); }
-        res.json(categories);
+        
+    Page.remove({}, function(err, pages) {
+        if(err){ res.send(err); }
+        res.json({message: 'everything\'s deleted'});
+    });
     });
 }

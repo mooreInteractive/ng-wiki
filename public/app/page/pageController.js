@@ -5,11 +5,11 @@ angular.module('ng-wiki.controllers')
 .controller('pageController', function($scope, $routeParams, Page){
     $scope.editingPage = false;
     var routedName = $routeParams.pageName;
-    angular.forEach($scope.wiki.pages, function(val, key){
-        if(val.name == routedName){
-            $scope.page = val;
-        }
-    });
+    
+    Page.get(routedName).then(function (response){
+            $scope.page = response.data;
+            console.log(response.data);
+        });
     //$scope.page = currPage;
 
     $scope.showEdit = function(){
@@ -17,20 +17,24 @@ angular.module('ng-wiki.controllers')
     };
 
     $scope.addSection = function(page){
-        page.body.push({'text':''});        
+        page.body.push({'text':'', 'date':new Date()});        
     };
-    $scope.updateArticle = function(page){
-        $scope.page = page;
-        $scope.editingPage = false;
+    $scope.updateArticle = function(page){        
+        Page.update(page).then(function (response){
+            $scope.page = response.data;        
+            $scope.editingPage = false;
+        });
     };
     $scope.clearArticle = function(){
         $scope.page = angular.copy($scope.emptyPage);
     };
     $scope.deleteArticle = function(page){
-        $scope.editingPage = false;
-        pagesArr = $scope.wiki.pages;
-        pagesArr.splice(pagesArr.indexOf(page), 1);
-        window.location = '#/';
+         Page.delete(page._id).then(function (response){
+            $scope.page = null;        
+            $scope.editingPage = false;
+            window.location = '#/';
+        });       
+        
     };
     $scope.cancelEdit = function(){
         $scope.editingPage = false;

@@ -17,7 +17,9 @@ angular.module('ng-wiki.controllers')
     });
     
     if(!catExists){window.location = '#/';} else {
-        
+        Page.getAllForCategory($scope.cat._id).then(function (response){
+            $scope.thisCatPages = response.data;
+        });
     }
 
     $scope.newPageForm = function(){
@@ -40,16 +42,19 @@ angular.module('ng-wiki.controllers')
     }
     
     $scope.newPage = function(newpage){
-        newpage.category = $scope.cat.name;//make this category page's category the new page's category
+        newpage.category = $scope.cat._id;//make this category page's category the new page's category
         
         newpage.name = encodeURIComponent(newpage.title.toLowerCase().replace(/ /g, '-'));
         //set the author as currUser - still dummy data 
         newpage.author = $scope.user;
+        newpage.created_date = newpage.modified_date = new Date();
         
         Page.create(newpage);
-        Page.get().then(function (response){
+        Page.getAllForCategory($scope.cat._id).then(function (response){
             $scope.thisCatPages = response.data;
-            console.log(response.data);
+            angular.forEach(response.data, function(val, index){
+                $scope.wiki.pages.push(val);
+            });
         });
         
         $scope.addingPage = false;

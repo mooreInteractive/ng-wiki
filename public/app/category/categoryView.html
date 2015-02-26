@@ -17,7 +17,7 @@
                     </div>
         <!-- List Current Pages in this Category -->
       	<ul>
-            <li ng-repeat="page in thisCatPages | filter:cat.name as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
+            <li ng-repeat="page in thisCatPages | filter:cat._id as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
         </ul>
     <br />
     <br />

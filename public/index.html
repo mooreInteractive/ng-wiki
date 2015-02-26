@@ -27,10 +27,12 @@
     <script src="app/category/categoryFactory.js"></script>
     <!-- Page -->
     <script src="app/page/pageController.js"></script>
+    <script src="app/page/pageFactory.js"></script>
     <!-- User -->
     
     <!-- Settings -->
     <script src="app/settings/settingsController.js"></script>
+    <script src="app/settings/settingsFactory.js"></script>
     
   </head>
   <body>
@@ -46,7 +48,7 @@
           {{ nav.name }} <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="page in wiki.pages | filter:nav.name as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
+            <li ng-repeat="page in wiki.pages | filter:nav._id as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
             <li class="divider"></li>
             <li><a href="#/categories/{{nav.url}}">All Pages</a></li>
         </ul>
@@ -56,6 +58,15 @@
     </div>
     <div id="page" class="max-1080 jumbotron" ng-view>
             
+    </div>
+    <div id="footer" class="page-footer">
+        <div id="footer-container" class="max-1080">
+        <a href="http://www.mongodb.org/" target="_blank"><img class="logo" src="img/mongodb.png" alt="Mongo DB"/></a>
+        <a href="http://nodejs.org/" target="_blank"><img class="logo" src="img/nodejs.png" alt="NodeJS"/></a>
+        <a href="http://expressjs.com/" target="_blank"><img class="logo" src="img/express.png" alt="Express"/></a>
+        <a href="https://angularjs.org/" target="_blank"><img class="logo" src="img/angularjs.png" alt="Angular JS"/></a>
+        <p>{{ wiki.name }} is powered by <a href="https://github.com/mooreInteractive/ng-wiki" target="_blank">ngWiki</a> by <a href="http://moore-ineractive.net" target="_blank">MooreInteractive</a>.</p>
+        </div>
     </div>
   </body>
 </html>

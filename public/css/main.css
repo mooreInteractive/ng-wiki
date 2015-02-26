@@ -8,6 +8,12 @@ p {margin: 0;}
     #wiki-title:hover{color: #08c;}
     #wiki-tagline{margin: 5px auto 25px auto!important;}
 
+#page{height: 100%; min-height: 100%;}
+
+#footer {margin: 0; width: 100%; background: rgba(0,0,0,0.1); border-top: #f6f6f7;}
+    #footer-container{padding: 50px 25px; marign: 0; text-align: center; }
+        #footer-container .logo{width: 150px; display: inline-block; margin: 5px 25px 50px;}
+
 #aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
     #aside li:hover{}
  

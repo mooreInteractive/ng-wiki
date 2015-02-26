@@ -23,7 +23,7 @@
       <div ng-repeat="cat in wiki.categories">
       	<h5><a class="btn btn-link" href="#/categories/{{cat.url}}">{{ cat.name }}</a></h5>
       	<ul>
-            <li ng-repeat="page in wiki.pages | filter:cat.name as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
+            <li ng-repeat="page in wiki.pages | filter:cat._id as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
         </ul>
       </div>
 <br />
