@@ -37,27 +37,27 @@ node server.js
 
 -----
 
-***Features:
+**Features**
 
-**Main Template**
+***Main Template***
 	-Permenant Navigation to Home, Settings
 
 	-Navigation based on Categories
 
 	-Create new Categories on home page
 
-**Category Pages**
+***Category Pages***
 	-List Pages in Category
 	-Create New Pages in current Category
 
-**Generic Pages**
+***Generic Pages***
 	-Display Page Content
 	-Build Digest Links
 	-Edit Page
 	-Add Sections
 	-(Attach Files)
 
-**Settings Page**
+***Settings Page***
 	-Set Wiki Name
 	-Set Wiki Tagline
 	-Set Wiki Welcome Message
