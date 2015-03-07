@@ -40,40 +40,24 @@ node server.js
 **Features**
 
 ***Main Template***
-
-	-Permenant Navigation to Home, Settings
-
-	-Navigation based on Categories
-
+	-Permenant Navigation to Home/Settings,
+	-Navigation based on Categorie,
 	-Create new Categories on home page
 
 ***Category Pages***
-
-	-List Pages in Category
-
+	-List Pages in Category,
 	-Create New Pages in current Category
 
 ***Generic Pages***
-
-	-Display Page Content
-
-	-Build Digest Links
-
-	-Edit Page
-
-	-Add Sections
-
+	-Display Page Content,
+	-Build Digest Links,
+	-Edit Page,
+	-Add Sections,
 	-(Attach Files)
 
 ***Settings Page***
-	
-	-Set Wiki Name
-
-	-Set Wiki Tagline
-
-	-Set Wiki Welcome Message
-
-	-Set Wiki MOTD
-
+	-Set Wiki Name,
+	-Set Wiki Tagline,
+	-Set Wiki Welcome Message,
+	-Set Wiki MOTD,
 	-set HomeHTML, if not set hoem page shows list of categories after MOTD
-	
