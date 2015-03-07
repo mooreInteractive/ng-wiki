@@ -10,7 +10,8 @@ var Page = mongoose.Schema({
     title : {type : String, default: '', required: true, unique:true},
     author : {type : String, default: '', required: true},
     category : {type: mongoose.Schema.ObjectId.name, ref: 'Category'},
-    body : [{ text: String, date: Date, sectionTitle: String }],
+    intro : {type : String, default: ''},
+    body : [{ text: String, date: Date, title: String, url: String }],
     created_date: {type: Date, required: true},
     last_modified: {type: Date, required: true, default: Date.now}
 });

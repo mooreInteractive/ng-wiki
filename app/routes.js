@@ -88,6 +88,8 @@ function updatePage(req, res){
         if(err){ res.send(err); }
         page.body = req.body.body;
         page.title = req.body.title;
+        page.intro = req.body.intro;
+        page.name = req.body.name;
         
         page.save(function(err, page){
             if(err){ res.send(err); }

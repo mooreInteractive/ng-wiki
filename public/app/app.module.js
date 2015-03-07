@@ -29,20 +29,12 @@ app.run(function($rootScope, $http, Page, Category){
                     angular.forEach(response.data, function(val, key){
                         $rootScope.wiki.pages.push(val);
                     });                    
-                    console.log(response.data);
-                    console.log($rootScope.wiki.pages);
+                    //console.log(response.data);
+                    //console.log($rootScope.wiki.pages);
                 });
             });
         }); 
        });
-    
-    
-    
-        
-    
-       
-
-    
     $rootScope.emptyPage = {
         author: null,
         title: null,

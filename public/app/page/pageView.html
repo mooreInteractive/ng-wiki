@@ -1,26 +1,43 @@
-<h3>{{ page.title }}</h3>
-<h4 ng-hide="page.name == 'ng-wiki-settings'">By {{ page.author }} <a class="btn" ng-click="showEdit()">Edit</a></h4>
-<div ng-repeat="section in page.body">
-<p ng-bind-html="section.text"></p>
-</div><br />     
 
-<div id="article-edit" ng-show="editingPage">
+<!-- Page Title -->
+<div class="editable-container" id="editableTitle"> 
+    <a class="btn btn-small btn-default editBtn" ng-show="user != ''" ng-click="edit('pageTitle', $event)">E</a>
+     <h2 ng-hide="editingParam == 'pageTitle'">{{ page.title }}</h2>
+    <input ng-show="editingParam == 'pageTitle'" type="text" ng-model="page.title" />
+</div>
 
-    <h4>Edit Article<a class="btn btn-link" ng-click="cancelEdit()">cancel editing</a></h4>
-    
-    <label>Title</label><input class="input-xlarge" id="title" type="text" ng-model="page.title" /><br />
-    
-    <label>Author</label><input class="input-xlarge" id="author" type="text" ng-model="page.author" /><br />
-    
-    <label>Aricle Body</label><Br />
-    <div ng-repeat="section in page.body">
-    <textarea class="input-xlarge" ng-model="section.text" rid="body" rows="8"></textarea><Br />
-    <a class="btn btn-link btn-insert" ng-click="addSection(page)"> + Insert New Section </a>
+<!-- Digest -->
+<div id="digest" ng-hide="editingParam == 'introText'">
+    <ul>
+    <li ng-repeat="section in page.body"><a ng-click="scrollTo(section.url)">{{ section.title }}</a></li>
+    </ul>
+</div>
+
+<!-- Author -->
+<p ng-hide="page.name == 'ng-wiki-settings'">
+    By <em>{{ page.author }}</em>
+</p>
+
+<!-- Intro Pgh -->
+<div class="editable-container" id="editableTitle">
+    <a class="btn btn-small btn-default editBtn" ng-show="user != ''" ng-click="edit('introText', $event)">E</a>
+    <div class="intro" ng-bind-html="page.intro" ng-hide="editingParam == 'introText'"></div>
+    <textarea rows="15" cols="30" ng-model="page.intro" ng-show="editingParam == 'introText'"></textarea>
+</div>
+
+<!-- Body -->
+    <div ng-repeat="section in page.body" ng-show="page.body.length > 0">
+        <div class="editable-container"> 
+            <a class="btn btn-small btn-default editBtn" ng-show="user != ''" ng-click="edit('section'+$index, $event)">E</a>
+            <a class="btn btn-small btn-danger delBtn" ng-show="editingParam == 'section'+$index" ng-click="removeSection(section)">-</a>
+
+            <h4 id="{{section.url}}" ng-hide="editingParam == 'section'+$index">{{ section.title }}</h4>
+            <div ng-bind-html="section.text" ng-hide="editingParam == 'section'+$index"></div>
+
+            <input type="text" ng-model="section.title" ng-show="editingParam == 'section'+$index" /><br />
+            <textarea rows="15" cols="30" ng-model="section.text" ng-show="editingParam == 'section'+$index"></textarea>
+        </div>
     </div>
     
-    <a class="btn btn-primary" ng-click="updateArticle(page)">Save</a>
-    <a class="btn btn-warning" ng-click="clearArticle()">Clear</a>
-    <a class="btn btn-danger" ng-click="deleteArticle(page)">Delete</a>
-    <a class="btn btn-link" ng-click="cancelEdit()">Cancel</a>
-
-</div>
+<!-- Add New Section -->
+<br /><a class="btn btn-link" ng-click="addSection(page)">New Section +</a><br /><br />
