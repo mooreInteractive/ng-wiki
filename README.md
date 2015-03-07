@@ -20,19 +20,19 @@ The application is not usable on a public server yet. It resides only on the for
 1. Clone ng-wiki files
 
 2. Install dependencies with npm via package.json:
-	
-	npm install
-    
+```	
+npm install
+```    
 3. Set up a folder called 'data' for mongo to use, then this to start the mongo server:
-	
-	mongod --dbpath 'path/to/folder/data'
-    
+```
+mongod --dbpath 'path/to/folder/data'
+```    
 4. If this is the first time running, create a db called ng-wiki in mongo, then proceed to step 5.
 
 5. Navigate in terminal to the ng-wiki folder and run the server application on Node:
-	
-	node server.js
-    
+```	
+node server.js
+```    
 6. Navigate in browser to http://localhost:8080/ (or whateve rport you set in server.js)
 
 -----
