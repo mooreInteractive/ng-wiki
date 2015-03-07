@@ -15,7 +15,7 @@ Run the server with 'node server.js'.
 
 The application is not usable on a public server yet. It resides only on the fornt end with local JSON dummy data. Once a user system is set up and the whole thing connects to a db on the back-end, it may be usable publicly. The goal is to keep intitialization steps in the code to a minimum. The optimal installation experience should be 4 steps:
 
-***Installation**
+***Installation***
 
 1. Clone ng-wiki files
 
@@ -39,25 +39,25 @@ node server.js
 
 ***Features:
 
-**Main Template: 
+**Main Template**
 	-Permenant Navigation to Home, Settings
 
 	-Navigation based on Categories
 
 	-Create new Categories on home page
 
-**Category Pages: 
+**Category Pages**
 	-List Pages in Category
 	-Create New Pages in current Category
 
-**Generic Pages: 
+**Generic Pages**
 	-Display Page Content
 	-Build Digest Links
 	-Edit Page
 	-Add Sections
 	-(Attach Files)
 
-**Settings Page:
+**Settings Page**
 	-Set Wiki Name
 	-Set Wiki Tagline
 	-Set Wiki Welcome Message
