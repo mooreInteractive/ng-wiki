@@ -5,8 +5,6 @@ Shared learning experience for Adam Moore and George Hong. Other contributors ma
 
 -----
 
-For now a lot of the files are just bootstrapping. The angular code mostly resides in 'public/js/main.js'. We will be working toward a more industry-standard project structure.
-
 **warning: learning experience - solutions may be very bad**
 
 To Start we have package.json dependencies: express, mongoose, passport. 
@@ -19,13 +17,23 @@ The application is not usable on a public server yet. It resides only on the for
 
 **Installation**
 
-	-Clone ng-wiki files
-    -Have Node installed
-    -NPM Proxy settings
-	-Npm Install via package.json
-	-Run the server application.
-	-Navigate to page in browser for one-time wiki setup -> http://localhost:8080/
+1. Clone ng-wiki files
 
+2. Install dependencies with npm via package.json:
+	
+	npm install
+
+3. Set up a folder called 'data' for mongo to use, then this to start the mongo server:
+	
+	mongod --dbpath ''
+
+4. If this is the first time running, create a db called ng-wiki on mongo, then proceed to step 5.
+
+5. Navigate in terminal to the ng-wiki folder and run the server application on Node:
+	
+	node server.js
+
+6. Navigate in browser to http://localhost:8080/ (or whateve rport you set in server.js)
 
 -----
 
@@ -41,9 +49,11 @@ Features:
 	--Create New Pages in current Category
 
 	-Generic Pages: 
-	--Display Title, Author(dummy::amoore), Body(HTML)
-	--Edit Page(Edit, Clear, Delete)
-	-*next: other pages in category
+	--Display Page Content
+	--Build Digest Links
+	--Edit Page
+	--Add Sections
+	--(Attach Files)
 
 	-Settings Page:
 	--Set Wiki Name
@@ -51,10 +61,4 @@ Features:
 	--Set Wiki Welcome Message
 	--Set Wiki MOTD
 	--set HomeHTML, if not set hoem page shows list of categories after MOTD
-
-Problem Areas:
-
-	-When pressing a cancel or save button, the new button doesn't work a second time unless navigating to a different page and back.
-	
-	-wiki settings like wiki title and tagline change in real time when updating the form without the need to press save. That doesn't seem appropriate. 
 
