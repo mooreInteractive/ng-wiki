@@ -15,7 +15,8 @@
 
 <!-- Author -->
 <p ng-hide="page.name == 'ng-wiki-settings'">
-    By <em>{{ page.author }}</em>
+    By <em>{{ page.author }}</em><br />
+    Updated: <em>{{ page.last_modified.substr(0, 10); }}</em>
 </p>
 
 <!-- Intro Pgh -->

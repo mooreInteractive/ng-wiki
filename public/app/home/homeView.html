@@ -10,10 +10,10 @@
 <div ng-show="wiki.homeHTML == ''">
 <h4>Categories <a class="btn btn-link" ng-click="newCatForm()">New Category</a></h4>
 <div id="new-cat-form" ng-show="addingCat">
-                        <h4>New Category{{newCatEdit}}<a class="btn btn-link" ng-click="cancel()">cancel</a></h4>
+                        <h4>New Category</h4>
                         
                         <label>Name</label><input class="input-xlarge" id="name" type="text" ng-model="cat.name" placeholder="Category Name"/>
-                        
+                        <br />
                         <a class="btn btn-primary" ng-click="newCat(cat)">Save</a>
                         <a class="btn btn-danger" ng-click="clear()">Clear</a>
                         <a class="btn btn-link" ng-click="cancel()">Cancel</a>

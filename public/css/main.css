@@ -1,23 +1,37 @@
 /* Main Structures */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {background: #dedede; color: #111111; }
 
 p {margin: 0;}
 
-#header{margin: 0; padding: 20px 0 30px; background-image: -webkit-linear-gradient(left, #67c082, #47b8e5); background-image: linear-gradient(left, #67c082, #47b8e5); border-bottom: none;}
+#header{background-image: -webkit-linear-gradient(left, #67c082, #47b8e5); background-image: linear-gradient(left, #67c082, #47b8e5); border-bottom: none;}
     #wiki-title{margin: 25px auto 0 auto!important; cursor: pointer;}
     #wiki-title:hover{color: #08c;}
     #wiki-tagline{margin: 5px auto 25px auto!important;}
 
 #page{min-height: 100%;}
 
-#footer {margin: 0; width: 100%; background: rgba(0,0,0,0.1); border-top: #f6f6f7;}
-    #footer-container{padding: 50px 25px; marign: 0; text-align: center; }
-        #footer-container .logo{width: 150px; display: inline-block; margin: 5px 25px 50px;}
+#footer {background: rgba(0,0,0,0.1); border-top: solid 1px #454545; padding: 50px 0 20px; text-align: center;}
+    #footer .logo{width: 150px; display: inline-block; margin: 5px 25px 50px; vertical-align: top;}
 
 #aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
     #aside li:hover{}
  
 .max-1080{width: 90%; max-width: 1080px; margin: 0 auto; padding: 0;}
+
+
+/* Home Page */
+
+/* New Category Form */
+#new-cat-form{ background: rgba(255,255,255,0.5); padding: 15px;}
+
+
+
 
 /* Article Styles */
 #article-edit textarea{width: 350px;}

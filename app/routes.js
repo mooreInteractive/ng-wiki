@@ -90,6 +90,7 @@ function updatePage(req, res){
         page.title = req.body.title;
         page.intro = req.body.intro;
         page.name = req.body.name;
+        page.last_modified = Date.now();
         
         page.save(function(err, page){
             if(err){ res.send(err); }

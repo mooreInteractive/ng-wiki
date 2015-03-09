@@ -7,14 +7,6 @@ Shared learning experience for Adam Moore and George Hong. Other contributors ma
 
 **warning: learning experience - solutions may be very bad**
 
-To Start we have package.json dependencies: express, mongoose, passport. 
-
-Running 'npm install' should install these, and be ready to run on the server. 
-
-Run the server with 'node server.js'.
-
-The application is not usable on a public server yet. It resides only on the fornt end with local JSON dummy data. Once a user system is set up and the whole thing connects to a db on the back-end, it may be usable publicly. The goal is to keep intitialization steps in the code to a minimum. The optimal installation experience should be 4 steps:
-
 ***Installation***
 
 1. Clone ng-wiki files
