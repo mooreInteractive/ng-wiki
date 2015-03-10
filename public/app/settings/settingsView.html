@@ -1,54 +1,61 @@
-<h2>Wiki Settings</h2>
-<p>Below you can change some of the global properties of this ng-Wiki installation.</p>
-
-<dl class="dl-horizontal">
-
-  <dt>Wiki Name</dt>
-  <dd>
-    <input class="input-xlarge" type="text" ng-model="tempSettings.name" /><br/ >
-    <span class="help-block">The main title of the wiki. Shows up in the Main Header on every page.</span>
-  </dd>
-
-  <dt>Tagline</dt>
-  <dd>
-    <input class="input-xlarge" type="text" ng-model="tempSettings.tagline" /><br/ >
-    <span class="help-block">A phrase or slogan to sit just below the wiki title in the main header on every page.</span>
-  </dd>
-
-  <dt>Welcome text</dt>
-  <dd>
-    <textarea class="input-xlarge" ng-model="tempSettings.welcome" rows="5"></textarea><br/ >
-    <span class="help-block">A welcome message at the top of the home page.</span>
-  </dd>
-
-  <dt>Message of The Day</dt>
-  <dd>
-    <textarea class="input-xlarge" ng-model="tempSettings.motd" rows="5"></textarea><br/ >
-    <span class="help-block">A message of the day. Sits just below the Welcome message on the home page.</span>
-  </dd>
-
-  <dt>Home Page HTML</dt>
-  <dd>
-    <textarea class="input-xlarge" ng-model="tempSettings.homeHTML" rows="5"></textarea><br/ >
-    <span class="help-block">Any additional HTML you'd like to include on the homepage. If left empty, a Category listing will be shown.</span>
-  </dd>
-
-<a class="btn btn-primary" ng-click="save(tempSettings)">Save</a>
-<a class="btn btn-link" ng-click="cancel()">Cancel</a>
-<br />
-<br />
-<div class="fluid-container page-stats">
-    <h2>Dev Tools</h2>
-    <div class="row-fluid">
-        <div class="span10">
-            <p><strong>Clear All the DB entries</strong><br />
-            only used for development cleaning processes!</p>
-        </div>
-        <div class="span2">
-            <a class="btn btn-danger" ng-click="clearDB()">Clear Mongo DB</a>
-        </div>
-    </div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Wiki Settings</h2>
+    <p>Below you can change some of the global properties of this ng-Wiki installation.</p>
+  </div>
 </div>
+<div class="row">
+  <div class="col-md-12">
+      <dl class="dl-horizontal">
+
+      <dt>Wiki Name</dt>
+      <dd>
+        <input class="input-xlarge" type="text" ng-model="tempSettings.name" /><br/ >
+        <span class="help-block">The main title of the wiki. Shows up in the Main Header on every page.</span>
+      </dd>
+
+      <dt>Tagline</dt>
+      <dd>
+        <input class="input-xlarge" type="text" ng-model="tempSettings.tagline" /><br/ >
+        <span class="help-block">A phrase or slogan to sit just below the wiki title in the main header on every page.</span>
+      </dd>
+
+      <dt>Welcome text</dt>
+      <dd>
+        <textarea class="input-xlarge" ng-model="tempSettings.welcome" rows="5"></textarea><br/ >
+        <span class="help-block">A welcome message at the top of the home page.</span>
+      </dd>
+
+      <dt>Message of The Day</dt>
+      <dd>
+        <textarea class="input-xlarge" ng-model="tempSettings.motd" rows="5"></textarea><br/ >
+        <span class="help-block">A message of the day. Sits just below the Welcome message on the home page.</span>
+      </dd>
+
+      <dt>Home Page HTML</dt>
+      <dd>
+        <textarea class="input-xlarge" ng-model="tempSettings.homeHTML" rows="5"></textarea><br/ >
+        <span class="help-block">Any additional HTML you'd like to include on the homepage. If left empty, a Category listing will be shown.</span>
+      </dd>
+      <a class="btn btn-primary" ng-click="save(tempSettings)">Save</a>
+      <a class="btn btn-link" ng-click="cancel()">Cancel</a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <h2>Dev Tools</h2>
+  </div>
+</div>
+<div class="row page-stats">
+  <div class="col-md-10">
+      <p><strong>Clear All the DB entries</strong><br />
+      only used for development cleaning processes!</p>
+  </div>
+  <div class="col-md-2">
+      <a class="btn btn-danger" ng-click="clearDB()">Clear Mongo DB</a>
+  </div>
+</div>
+
 
 
 

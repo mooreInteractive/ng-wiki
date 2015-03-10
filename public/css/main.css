@@ -22,12 +22,21 @@ p {margin: 0;}
 #page{min-height: 100%;}
 
 #footer {background: rgba(0,0,0,0.1); border-top: solid 1px #454545; padding: 50px 0 20px; text-align: center;}
-    #footer .logo{width: 150px; display: inline-block; margin: 5px 25px 50px; vertical-align: top;}
+    #footer .logo{max-width: 150px; display: inline-block; vertical-align: top;}
 
 .sidebar {background: rgba(0,0,0,0.1);} 
     
-#main-nav {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
-    #main-nav .nav{margin: 5px auto;}
+#main-nav {
+    display: block; 
+    width: 100%; 
+    border-top: solid 1px #454545; 
+    margin: 0; 
+    background: #cdcdcd; 
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+
+input, textarea {width: 85%; margin: 5px auto;}
  
 /* .max-1080{width: 90%; max-width: 1080px; margin: 0 auto; padding: 0;} */
 
@@ -35,7 +44,7 @@ p {margin: 0;}
 /* Home Page */
 
 /* New Category Form */
-#new-cat-form{ background: rgba(255,255,255,0.5); padding: 15px;}
+#new-cat-form, #new-page-form{ background: rgba(255,255,255,0.5); padding: 15px;}
 
 
 
@@ -46,14 +55,9 @@ p {margin: 0;}
 .btn-insert{ position: relative; top: -17px; right: -200px;}
 
 .page-stats{ 
-    background: #f6f6f7; padding: 20px 15px;
+    background: #f6f6f7;
+    padding-top: 15px; padding-bottom: 15px;
  }
- .page-stats .row-fluid { 
-    background: #dedede; border-radius: 7px;
-    margin: 5px;
- }
- .page-stats .row-fluid div {padding: 5px 10px;}
- .page-stats .row-fluid .span2 { padding: 10px 0 0 0; }
 
  #digest{
     background: #f6f6f7; 
@@ -69,7 +73,7 @@ p {margin: 0;}
 #digest ul{list-style: none outside none; margin: 0;}
 #digest ul li:first-child{margin-top: 10px;}
 #digest ul li a{padding: 5px 15px;}
-
+/*
 .editable-container{position: relative;}
 .editable-container input{margin-top: 10px;}
 .editBtn {
@@ -81,5 +85,5 @@ p {margin: 0;}
     position: absolute;
     left: -35px;
     top: 45px; 
-}
+}*/
 
