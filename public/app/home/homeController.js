@@ -2,12 +2,12 @@
 
 angular.module('ng-wiki.controllers')
 
-.controller('homeController', function($scope, Category){
+.controller('homeController', function($scope, $rootScope, Category){
     $scope.emptyCat = {name: '', url:''};
     $scope.addingCat = false;
 
     Category.get().then(function (response){
-        $scope.wiki.categories = response.data;
+        $rootScope.wiki.categories = response.data;
         //console.log($scope.wiki);
     });
 
@@ -19,11 +19,10 @@ angular.module('ng-wiki.controllers')
     $scope.newCat = function(cat){
         newURL = encodeURIComponent(cat.name.toLowerCase().replace(/ /g, '-'));
         cat.url = newURL;
-        $scope.wiki.categories.push(cat);
         Category.create(cat);
 
         Category.get().then(function (response){
-            $scope.wiki.categories = response.data;
+            $rootScope.wiki.categories = response.data;
             console.log(response.data);
         });
         

@@ -12,11 +12,10 @@ angular.module('ng-wiki.factories', []);
 angular.module('ng-wiki.routes', []);
 
 
-app.run(function($rootScope, $http, Page, Category, Settings){
+app.run(function($rootScope, Page, Category, Settings){
     //Dummy Data - Need to pull this data from the DB when ready.
     $rootScope.user = 'amoore';
     
-    //DUmmy data from JSON file
     Settings.get()
        .then(function(res){
           $rootScope.wiki = res.data[0];
@@ -27,9 +26,9 @@ app.run(function($rootScope, $http, Page, Category, Settings){
        .then(function(){
            Category.get().then(function (response){
             $rootScope.wiki.categories = response.data;
-            angular.forEach($rootScope.wiki.categories, function(val, key){
+            angular.forEach($rootScope.wiki.categories, function(val){
                 Page.getAllForCategory(val._id).then(function (response){
-                    angular.forEach(response.data, function(val, key){
+                    angular.forEach(response.data, function(val){
                         $rootScope.wiki.pages.push(val);
                     });                    
                     //console.log(response.data);
@@ -49,5 +48,5 @@ app.run(function($rootScope, $http, Page, Category, Settings){
 
     $rootScope.goHome = function(){
         window.location = '#/';
-    }
+    };
 });

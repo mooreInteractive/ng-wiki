@@ -1,7 +1,5 @@
 //Category Factory
-
 angular.module('ng-wiki.factories').factory('Category', ['$http', function($http) {
-
     return {
         // call to get all cats
         get : function() {
@@ -15,6 +13,5 @@ angular.module('ng-wiki.factories').factory('Category', ['$http', function($http
         delete : function(id) {
             return $http.delete('/api/categories/' + id);
         }
-    }       
-
+    };
 }]);

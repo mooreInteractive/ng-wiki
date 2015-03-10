@@ -32,7 +32,7 @@ angular.module('ng-wiki.controllers')
     $scope.scrollTo = function(id) {
         $location.hash(id);
         $anchorScroll();
-    }
+    };
 
     $scope.addSection = function(page){
         page.body.push({'title':'section title', 'url':'section-title', 'text':'', 'date':new Date()});        
@@ -42,8 +42,7 @@ angular.module('ng-wiki.controllers')
         $scope.page.body.splice($scope.page.body.indexOf(section), 1);
         $scope.editingParam = null;
         $scope.updateArticle($scope.page);
-
-    }
+    };
 
     $scope.updateArticle = function(page){ 
         page.body.forEach(function(elem, index, arr){

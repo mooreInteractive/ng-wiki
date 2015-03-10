@@ -1,7 +1,5 @@
 //Page Factory
-
 angular.module('ng-wiki.factories').factory('Page', ['$http', function($http) {
-
     return {
         getAllForCategory : function(id) {
             return $http.get('/api/' + id + '/pages');
@@ -18,6 +16,5 @@ angular.module('ng-wiki.factories').factory('Page', ['$http', function($http) {
         delete : function(id) {
             return $http.delete('/api/page/' + id);
         }
-    }       
-
+    };
 }]);

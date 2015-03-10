@@ -1,7 +1,5 @@
 //WikiSettings Factory
-
 angular.module('ng-wiki.factories').factory('Settings', ['$http', function($http) {
-
     return {
         // call to get all cats
         get : function() {
@@ -13,6 +11,5 @@ angular.module('ng-wiki.factories').factory('Settings', ['$http', function($http
         deleteAll : function() {
             return $http.delete('/api/cleardb');
         }
-    }       
-
+    };
 }]);

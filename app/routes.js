@@ -28,7 +28,6 @@ module.exports = function(app) {
     //Wiki Settings
     app.get('/api/settings', getSettings );
     app.put('/api/settings', updateSettings );
-    app.delete('/api/cleardb', clearMongoDb );
     
     // ---- All other none API routes use front-end routing ----
     app.get('*', function(req, res) {
@@ -141,17 +140,5 @@ function updateSettings(req, res){
             if(err){ res.send(err); }
             res.json(settings);
         });
-    });
-}
-
-function clearMongoDb(req, res){
-    Category.remove({}, function(err, categories) {
-        if(err){ res.send(err); }
-        
-        Page.remove({}, function(err, pages) {
-            if(err){ res.send(err); }
-            res.json({message: 'everything\'s deleted'});
-        });
-        
     });
 }

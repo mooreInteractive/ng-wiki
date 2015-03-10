@@ -2,7 +2,7 @@
 
 angular.module('ng-wiki.controllers')
 
-.controller('catController', function($scope, $routeParams, Category, Page){
+.controller('catController', function($scope, $rootScope, $routeParams, Category, Page){
     var routedCat = $routeParams.catUrl;
     var catExists = false;
     $scope.catDeleteWarning = false;
@@ -25,21 +25,21 @@ angular.module('ng-wiki.controllers')
     $scope.newPageForm = function(){
         $scope.addingPage = true;
         $scope.newpage = angular.copy($scope.emptyPage);
-    }
+    };
     
     $scope.deleteCat = function(cat){
         //Check to see if there are pages in the category first
                 
         if($scope.thisCatPages.length > 0){
-            Category.delete($scope.cat._id).then(function (response){
-                $scope.wiki.categories = response.data;
+            Category.delete(cat._id).then(function (response){
+                $rootScope.wiki.categories = response.data;
             });        
             window.location = '#/';
         } else {
             $scope.catDeleteWarningMsg = 'You cannot delete a category that contains pages.';
             $scope.catDeleteWarning = true;
         }
-    }
+    };
     
     $scope.newPage = function(newpage){
         newpage.category = $scope.cat._id;//make this category page's category the new page's category
@@ -53,7 +53,7 @@ angular.module('ng-wiki.controllers')
         Page.getAllForCategory($scope.cat._id).then(function (response){
             $scope.thisCatPages = response.data;
             angular.forEach(response.data, function(val, index){
-                $scope.wiki.pages.push(val);
+                $rootScope.wiki.pages.push(val);
             });
         });
         
@@ -70,4 +70,3 @@ angular.module('ng-wiki.controllers')
     };
     
 });
-

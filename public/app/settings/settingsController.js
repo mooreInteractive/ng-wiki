@@ -12,17 +12,10 @@ angular.module('ng-wiki.controllers')
             $rootScope.wiki.motd     = response.data.motd;
             $rootScope.wiki.homeHTML = response.data.homeHTML;
         });
+        
     };
     
     $scope.cancel = function(){
-        window.location = '#/';
-    };
-    
-    $scope.clearDB = function(){
-        Settings.deleteAll().then(function (response){
-            $scope.wiki.categories = [];
-            $scope.wiki.pages = [];
-        });        
         window.location = '#/';
     };
     
