@@ -1,6 +1,7 @@
 // app/routes.js
 var mongoose = require('mongoose');
 
+var Settings = require('./models/settings');
 var Category = require('./models/category');
 var Page = require('./models/page');
 var User = require('./models/user');
@@ -24,7 +25,9 @@ module.exports = function(app) {
     app.post('/api/pages', addPage );
     app.delete('/api/page/:page_id', deletePage );
     
-    //Dev Utilities
+    //Wiki Settings
+    app.get('/api/settings', getSettings );
+    app.put('/api/settings', updateSettings );
     app.delete('/api/cleardb', clearMongoDb );
     
     // ---- All other none API routes use front-end routing ----
@@ -116,14 +119,39 @@ function deletePage(req, res){
     });
 }
 
-//Dev Utilities API Functions
+//Wiki Settings API Functions
+function getSettings(req, res){
+    Settings.find(function(err, settings) {
+        if(err){ res.send(err); }
+        res.json(settings);
+    });
+}
+
+function updateSettings(req, res){
+    Settings.findOne({},function(err, settings) {
+        if(err){ res.send(err); }
+        
+        settings.name = req.body.name;
+        settings.tagline = req.body.tagline;
+        settings.welcome = req.body.welcome;
+        settings.motd = req.body.motd;
+        settings.homeHTML = req.body.homeHTML;
+        
+        settings.save(function(err, settings){
+            if(err){ res.send(err); }
+            res.json(settings);
+        });
+    });
+}
+
 function clearMongoDb(req, res){
     Category.remove({}, function(err, categories) {
         if(err){ res.send(err); }
         
-    Page.remove({}, function(err, pages) {
-        if(err){ res.send(err); }
-        res.json({message: 'everything\'s deleted'});
-    });
+        Page.remove({}, function(err, pages) {
+            if(err){ res.send(err); }
+            res.json({message: 'everything\'s deleted'});
+        });
+        
     });
 }

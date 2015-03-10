@@ -11,14 +11,9 @@ angular.module('ng-wiki.factories').factory('Category', ['$http', function($http
         create : function(catData) {
             return $http.post('/api/categories', catData);
         },
-
         // call to DELETE a cat
         delete : function(id) {
             return $http.delete('/api/categories/' + id);
-        },
-        
-        deleteAll : function() {
-            return $http.delete('/api/cleardb');
         }
     }       
 

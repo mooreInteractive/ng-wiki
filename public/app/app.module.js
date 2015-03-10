@@ -12,14 +12,17 @@ angular.module('ng-wiki.factories', []);
 angular.module('ng-wiki.routes', []);
 
 
-app.run(function($rootScope, $http, Page, Category){
+app.run(function($rootScope, $http, Page, Category, Settings){
     //Dummy Data - Need to pull this data from the DB when ready.
     $rootScope.user = 'amoore';
     
     //DUmmy data from JSON file
-    $http.get('data/wiki.json')
+    Settings.get()
        .then(function(res){
-          $rootScope.wiki = res.data;
+          $rootScope.wiki = res.data[0];
+          $rootScope.wiki.categories = [];
+          $rootScope.wiki.pages = [];
+          console.log(res.data);
         })
        .then(function(){
            Category.get().then(function (response){
@@ -35,6 +38,7 @@ app.run(function($rootScope, $http, Page, Category){
             });
         }); 
        });
+    
     $rootScope.emptyPage = {
         author: null,
         title: null,

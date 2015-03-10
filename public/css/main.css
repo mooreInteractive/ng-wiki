@@ -9,6 +9,11 @@ body {background: #dedede; color: #111111; }
 
 p {margin: 0;}
 
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+}
+
 #header{background-image: -webkit-linear-gradient(left, #67c082, #47b8e5); background-image: linear-gradient(left, #67c082, #47b8e5); border-bottom: none;}
     #wiki-title{margin: 25px auto 0 auto!important; cursor: pointer;}
     #wiki-title:hover{color: #08c;}
@@ -19,10 +24,12 @@ p {margin: 0;}
 #footer {background: rgba(0,0,0,0.1); border-top: solid 1px #454545; padding: 50px 0 20px; text-align: center;}
     #footer .logo{width: 150px; display: inline-block; margin: 5px 25px 50px; vertical-align: top;}
 
-#aside {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
-    #aside li:hover{}
+.sidebar {background: rgba(0,0,0,0.1);} 
+    
+#main-nav {display: block; width: 100%; border-top: solid 1px #454545; margin: 0; background: #cdcdcd;}
+    #main-nav .nav{margin: 5px auto;}
  
-.max-1080{width: 90%; max-width: 1080px; margin: 0 auto; padding: 0;}
+/* .max-1080{width: 90%; max-width: 1080px; margin: 0 auto; padding: 0;} */
 
 
 /* Home Page */

@@ -1,32 +1,34 @@
-<dl class="dl-horizontal">
-  <dt>Welcome</dt>
-  <dd>{{ wiki.welcome }}</dd>
-  <br />
-  <dt>Message of The Day</dt>
-  <dd>{{ wiki.motd }}</dd>
-</dl>
-<br />
-<div id="homeBody" ng-show="wiki.homeHTML != ''" ng-bind-html="wiki.homeHTML"></div>
-<div ng-show="wiki.homeHTML == ''">
-<h4>Categories <a class="btn btn-link" ng-click="newCatForm()">New Category</a></h4>
-<div id="new-cat-form" ng-show="addingCat">
-                        <h4>New Category</h4>
-                        
-                        <label>Name</label><input class="input-xlarge" id="name" type="text" ng-model="cat.name" placeholder="Category Name"/>
-                        <br />
-                        <a class="btn btn-primary" ng-click="newCat(cat)">Save</a>
-                        <a class="btn btn-danger" ng-click="clear()">Clear</a>
-                        <a class="btn btn-link" ng-click="cancel()">Cancel</a>
-
-                    </div>
-      <!-- List Current Categories -->
-      <div ng-repeat="cat in wiki.categories">
-      	<h5><a class="btn btn-link" href="#/categories/{{cat.url}}">{{ cat.name }}</a></h5>
-      	<ul>
-            <li ng-repeat="page in wiki.pages | filter:cat._id as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
-        </ul>
-      </div>
-<br />
+<div class="row">
+    <dl class="dl-horizontal col-md-12">
+        <dt>Welcome</dt>
+        <dd>{{ wiki.welcome }}</dd>
+        <br />
+        <dt>Message of The Day</dt>
+        <dd>{{ wiki.motd }}</dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-md-4 sidebar">
+    <h4>Categories <a class="btn btn-link" ng-click="newCatForm()">New Category</a></h4>
+        <div id="new-cat-form" ng-show="addingCat">
+            <h4>New Category</h4>                        
+            <label>Name</label><input class="input-xlarge" id="name" type="text" ng-model="cat.name" placeholder="Category Name"/>
+            <br />
+            <a class="btn btn-primary" ng-click="newCat(cat)">Save</a>
+            <a class="btn btn-danger" ng-click="clear()">Clear</a>
+            <a class="btn btn-link" ng-click="cancel()">Cancel</a>
+        </div>
+        <!-- List Current Categories -->
+        <div ng-repeat="cat in wiki.categories">
+            <h5><a class="btn btn-link" href="#/categories/{{cat.url}}">{{ cat.name }}</a></h5>
+            <ul>
+                <li ng-repeat="page in wiki.pages | filter:cat._id as results"><a href="#/pages/{{page.name}}">{{ page.title }}</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="homeBody" class="col-md-8" ng-bind-html="wiki.homeHTML">
+        
+    </div>
 </div>
 
 
